@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckh5v37hvwvs1"]
+
+[ext_resource type="Script" path="res://Scenes/game_scene.gd" id="1_7y83p"]
+[ext_resource type="Texture2D" uid="uid://bdh44nnn0n8ux" path="res://icon.svg" id="1_w31ql"]
+
+[node name="GameScene" type="Node" node_paths=PackedStringArray("label", "btn", "upgrade_btn")]
+script = ExtResource("1_7y83p")
+label = NodePath("Label")
+btn = NodePath("Clicker")
+upgrade_btn = NodePath("Upgrade")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 301.0
+offset_right = -300.0
+offset_bottom = 57.0
+grow_horizontal = 2
+text = "SCORE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Clicker" type="Button" parent="."]
+offset_left = 508.0
+offset_top = 252.0
+offset_right = 644.0
+offset_bottom = 388.0
+icon = ExtResource("1_w31ql")
+icon_alignment = 1
+
+[node name="Upgrade" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 512.0
+offset_right = 320.0
+offset_bottom = 576.0
+text = "UPGRADE 100$"
+
+[connection signal="pressed" from="Clicker" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Upgrade" to="." method="_on_upgrade_pressed"]
