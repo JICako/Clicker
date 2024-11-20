@@ -3,15 +3,18 @@
 [ext_resource type="Script" path="res://Scenes/game_scene.gd" id="1_7y83p"]
 [ext_resource type="Texture2D" uid="uid://bdh44nnn0n8ux" path="res://icon.svg" id="1_w31ql"]
 
-[node name="GameScene" type="Node" node_paths=PackedStringArray("score_label", "sps_label", "price_label", "btn", "upgrade_btn")]
+[node name="GameScene" type="Node" node_paths=PackedStringArray("_money", "_mpc", "_mps", "_mpc_price", "_mps_price", "_click_btn", "_mpc_btn", "_mps_btn")]
 script = ExtResource("1_7y83p")
-score_label = NodePath("score")
-sps_label = NodePath("SPS")
-price_label = NodePath("price")
-btn = NodePath("Clicker")
-upgrade_btn = NodePath("Upgrade")
+_money = NodePath("money")
+_mpc = NodePath("mpc")
+_mps = NodePath("mps")
+_mpc_price = NodePath("price mpc")
+_mps_price = NodePath("price mps")
+_click_btn = NodePath("Clicker")
+_mpc_btn = NodePath("Upgrade click")
+_mps_btn = NodePath("Upgrade per sec")
 
-[node name="score" type="Label" parent="."]
+[node name="money" type="Label" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 301.0
@@ -30,23 +33,39 @@ offset_bottom = 388.0
 icon = ExtResource("1_w31ql")
 icon_alignment = 1
 
-[node name="Upgrade" type="Button" parent="."]
+[node name="Upgrade click" type="Button" parent="."]
 offset_left = 64.0
 offset_top = 512.0
 offset_right = 320.0
 offset_bottom = 576.0
-text = "UPGRADE"
+text = "CLICK"
 
-[node name="SPS" type="Label" parent="."]
+[node name="Upgrade per sec" type="Button" parent="."]
+offset_left = 832.0
+offset_top = 512.0
+offset_right = 1088.0
+offset_bottom = 576.0
+text = "$/SEC"
+
+[node name="mpc" type="Label" parent="."]
 offset_left = 384.0
 offset_top = 64.0
 offset_right = 768.0
 offset_bottom = 128.0
+text = "$ per click"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mps" type="Label" parent="."]
+offset_left = 384.0
+offset_top = 128.0
+offset_right = 768.0
+offset_bottom = 192.0
 text = "$ per sec"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="price" type="Label" parent="."]
+[node name="price mpc" type="Label" parent="."]
 offset_left = 64.0
 offset_top = 448.0
 offset_right = 320.0
@@ -55,5 +74,15 @@ text = "price"
 horizontal_alignment = 1
 vertical_alignment = 3
 
-[connection signal="pressed" from="Clicker" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Upgrade" to="." method="_on_upgrade_pressed"]
+[node name="price mps" type="Label" parent="."]
+offset_left = 832.0
+offset_top = 448.0
+offset_right = 1088.0
+offset_bottom = 512.0
+text = "price"
+horizontal_alignment = 1
+vertical_alignment = 3
+
+[connection signal="pressed" from="Clicker" to="." method="_on_clicker_pressed"]
+[connection signal="pressed" from="Upgrade click" to="." method="_on_upgrade_click_pressed"]
+[connection signal="pressed" from="Upgrade per sec" to="." method="_on_upgrade_per_sec_pressed"]
