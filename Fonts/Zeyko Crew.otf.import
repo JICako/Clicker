@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://d3brpasaocr3y"
-path="res://.godot/imported/Zeyko Crew.otf-920c8d076e6fe2b98146055159c5ee02.fontdata"
+path="res://.godot/imported/Zeyko Crew.otf-0fa2a2f22469fd23dbe6094823b995af.fontdata"
 
 [deps]
 
-source_file="res://Zeyko Crew.otf"
-dest_files=["res://.godot/imported/Zeyko Crew.otf-920c8d076e6fe2b98146055159c5ee02.fontdata"]
+source_file="res://Fonts/Zeyko Crew.otf"
+dest_files=["res://.godot/imported/Zeyko Crew.otf-0fa2a2f22469fd23dbe6094823b995af.fontdata"]
 
 [params]
 
