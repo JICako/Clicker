@@ -16,7 +16,7 @@ var mpc = 1
 var mps = 0
 
 var mpc_b_price = 10
-var coef_mpc = 1.5
+var coef_mpc = 1.2
 var lvl_mpc = 0
 var bp_mpc = 1
 
@@ -28,11 +28,10 @@ var bp_mps = 1
 
 func _ready():
 	update_display()
-
+	
 func _on_clicker_pressed():
 	money += mpc
 	update_display()
-
 
 func _on_upgrade_click_pressed():
 	var mpc_price = mpc_b_price * pow(coef_mpc, lvl_mpc)
