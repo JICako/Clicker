@@ -6,11 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://dxk2mcxexl71r" path="res://Sprites/tabl.png" id="4_83n6b"]
 [ext_resource type="Texture2D" uid="uid://sgesitfsf7us" path="res://Sprites/click.png" id="4_mcjk2"]
 
-[node name="GameScene" type="Node" node_paths=PackedStringArray("_money", "_mpc", "_mps", "_mpc_price", "_mps_price", "_mpc_btn", "_mps_btn")]
+[node name="GameScene" type="Node" node_paths=PackedStringArray("_money", "_mpc", "_mps", "_prest", "_mpc_price", "_mps_price", "_mpc_btn", "_mps_btn")]
 script = ExtResource("1_7y83p")
 _money = NodePath("money")
 _mpc = NodePath("mpc")
 _mps = NodePath("mps")
+_prest = NodePath("prest_txt")
 _mpc_price = NodePath("price mpc")
 _mps_price = NodePath("price mps")
 _mpc_btn = NodePath("Upgrade click")
@@ -55,7 +56,7 @@ flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Upgrade click"]
 position = Vector2(120, 32)
-scale = Vector2(0.688, 0.688)
+scale = Vector2(-0.688, 0.688)
 texture = ExtResource("4_83n6b")
 
 [node name="Upgrade per sec" type="Button" parent="."]
@@ -184,6 +185,52 @@ position = Vector2(128, 128)
 scale = Vector2(0.544, 0.544)
 texture = ExtResource("4_mcjk2")
 
+[node name="prest" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -93.5
+offset_top = -116.0
+offset_right = 93.5
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 0
+
+[node name="Tabl" type="Sprite2D" parent="prest"]
+position = Vector2(85.5, 68)
+scale = Vector2(0.385, 0.385)
+texture = ExtResource("4_83n6b")
+
+[node name="prest_txt" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.247
+offset_left = -116.0
+offset_top = 84.0
+offset_right = 115.0
+offset_bottom = -1.056
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.886275, 0.811765, 0.619608, 1)
+theme_override_colors/font_shadow_color = Color(0.262745, 0.113725, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_vtlc7")
+theme_override_font_sizes/font_size = 51
+text = "Prest"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="cheat" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
 [connection signal="pressed" from="Upgrade click" to="." method="_on_upgrade_click_pressed"]
 [connection signal="pressed" from="Upgrade per sec" to="." method="_on_upgrade_per_sec_pressed"]
 [connection signal="pressed" from="Clicker" to="." method="_on_clicker_pressed"]
+[connection signal="pressed" from="prest" to="." method="_on_prest_pressed"]
+[connection signal="pressed" from="cheat" to="." method="_on_cheat_pressed"]

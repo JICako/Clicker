@@ -3,6 +3,7 @@ extends Node
 @export var _money: Label #total money
 @export var _mpc: Label #money_per_click
 @export var _mps: Label #money_per_sec
+@export var _prest: Label
 
 @export var _mpc_price: Label #price_money_per_click
 @export var _mps_price: Label #price_money_per_sec
@@ -10,10 +11,12 @@ extends Node
 @export var _click_btn: Button #main_button
 @export var _mpc_btn: Button #buy_mpc_button
 @export var _mps_btn: Button #buy_mps_button
+@export var _prest_btn: Button
 
-var money = 0
+var money = 100000
 var mpc = 1
 var mps = 0
+var prest = 0.1
 
 var mpc_b_price = 10
 var coef_mpc = 1.2
@@ -67,3 +70,28 @@ func update_display():
 	_mps.text = "%.2f$/sec" % mps
 	_mpc_price.text = "%.2f$" % mpc_price
 	_mps_price.text = "%.2f$" % mps_price
+	_prest.text = "%.2fPP" % prest
+
+func _on_prest_pressed() -> void:
+	if money >= 100000:
+		prest = prest + (1000000 / money)
+		
+		money = 0
+		mpc = 1 + prest
+		mps = 0
+		
+		mpc_b_price = 10
+		coef_mpc = 1.2
+		lvl_mpc = 0
+		bp_mpc = bp_mpc + 0.2
+		
+		mps_b_price = 50
+		coef_mps = 2.0
+		lvl_mps = 0
+		bp_mps = bp_mps + 0.2
+		
+		update_display()
+
+
+func _on_cheat_pressed() -> void:
+	money = 100000
